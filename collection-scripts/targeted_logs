@@ -68,6 +68,8 @@ for nsvm in ${target_vms[@]}; do
     pwait $max_parallelism
   fi
 
+  echo "target migrations"
+  echo ${target_migrations[@]};
   for migration in ${target_migrations[@]}; do
     read migration_id <<< $migration
     populatorPod=$(oc get pods --no-headers -n $ns --selector migration=$migration_id -o go-template='{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}' | head -1)
