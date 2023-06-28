@@ -42,6 +42,8 @@ for component in cdi vm-import; do
   done
 done
 
+echo "target vms"
+echo ${target_vms[@]}
 # Collect virt-launcher and virt-v2v pod logs for migrated VMs (from VM's target namespace)
 for nsvm in ${target_vms[@]}; do
   IFS="," read ns vm vmid <<< $nsvm
